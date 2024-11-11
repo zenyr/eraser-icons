@@ -1,0 +1,39 @@
+.item {
+  word-break: keep-all;
+}
+
+.item:hover .human_readable {
+  display: none;
+}
+.item:hover .raw {
+  display: flex;
+}
+.item .raw {
+  display: none;
+}
+.raw {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.raw svg {
+  margin-left: 2px;
+  margin-bottom: -2px;
+}
+
+.tags {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.tag {
+  opacity: 0.5;
+}
+.tag:hover {
+  opacity: 1;
+}
+
+.image {
+  width: 32px;
+  height: 32px;
+}
