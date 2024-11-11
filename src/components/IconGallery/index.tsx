@@ -10,8 +10,8 @@ const IconGallery = () => {
     <Flex align="stretch" direction="column" gap="lg">
       <IconGallerySearch setSearch={setSearch} />
       <SimpleGrid spacing="md" cols={{ base: 2, sm: 3, lg: 5 }}>
-        {items.map(({ item }) => (
-          <IconGalleryItem key={item.value} {...item} />
+        {items.map(({ item, score }) => (
+          <IconGalleryItem key={item.value} score={score} {...item} />
         ))}
       </SimpleGrid>
     </Flex>

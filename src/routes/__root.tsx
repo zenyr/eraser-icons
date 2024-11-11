@@ -6,7 +6,7 @@ export const Route = createRootRoute({
   component: () => (
     <App>
       <Outlet />
-      <TanStackRouterDevtools />
+      {process.env.NODE_ENV !== "production" && <TanStackRouterDevtools />}
     </App>
   ),
 });

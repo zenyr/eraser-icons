@@ -8,7 +8,10 @@ import { PATTERN } from "../../dataset/icons/aws";
 import classes from "./item.module.css";
 import { Loading } from "./Loading";
 
-export const IconGalleryItem = (props: IconDefinition) => {
+interface Props extends IconDefinition {
+  score?: number;
+}
+export const IconGalleryItem = (props: Props) => {
   const { value, tags, aliases, humanReadable } = props;
   const src = PATTERN.replace("{name}", value);
   const { copy, copied, reset } = useClipboard({ timeout: 500 });
@@ -32,9 +35,9 @@ export const IconGalleryItem = (props: IconDefinition) => {
   );
 
   return (
-    <Card className={classes.item} withBorder>
+    <Card className={classes.item} withBorder shadow="sm">
       <Flex direction="column" gap="sm" align="center">
-        <Group gap="xs" className={classes.tags}p="xs">
+        <Group gap="xs" className={classes.tags} p="xs">
           {tags.map((tag) => (
             <Pill key={tag} variant="default" size="xs" c="grape" className={classes.tag}>
               {tag}
