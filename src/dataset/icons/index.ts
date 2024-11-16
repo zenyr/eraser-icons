@@ -23,7 +23,7 @@ const serialize =
 
       return {
         tags: [category],
-        humanReadable: value.replace(/^(aws|k8s|gcp|azure)-/,''),
+        humanReadable: value.replace(/^(aws|k8s|gcp|azure)-/, ""),
         aliases,
         value,
       };
@@ -40,4 +40,13 @@ export const ICONS: IconDefinition[] = [
     ...K8S_ICONS.map(serialize("k8s")),
     ...TECH_LOGOS_ICONS.map(serialize("tech-logos")),
   ]),
+];
+
+export type Tag = (typeof ICONS)[number]["tags"][number];
+
+export const TAGS: Tag[] = [
+  ...ICONS.reduce((acc, { tags }) => {
+    tags.forEach(t=>acc.add(t));
+    return acc;
+  }, new Set<Tag>()),
 ];
