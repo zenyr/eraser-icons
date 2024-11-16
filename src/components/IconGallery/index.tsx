@@ -34,6 +34,8 @@ const IconGallery = () => {
           variant="transparent"
         >
           Please try another search query 🌝
+          <br />
+          Or select a single tag to list all icons at once.
         </Alert>
       )}
     </Flex>

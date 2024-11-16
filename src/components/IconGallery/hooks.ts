@@ -1,6 +1,6 @@
-import { default as Fuse } from "fuse.js";
+import { default as Fuse, FuseResult } from "fuse.js";
 import { useCallback, useMemo, useState } from "react";
-import { ICONS, Tag } from "../../dataset/icons";
+import { IconDefinition, ICONS, Tag } from "../../dataset/icons";
 
 const filterIconByTag = (icon: (typeof ICONS)[number], tags: Set<Tag>) => {
   if (tags.size === 0) return true;
@@ -26,6 +26,12 @@ export const useIcons = () => {
   );
 
   const [search, setSearch] = useState("");
-  const items = search ? fuse.search(search) : [];
+  const items = search
+    ? fuse.search(search)
+    : tags.size === 1
+      ? icons.map(
+          (item, refIndex) => ({ item, refIndex, score: 0 }) satisfies FuseResult<IconDefinition>,
+        )
+      : [];
   return { tags, handleTagsChange, items, setSearch };
 };
